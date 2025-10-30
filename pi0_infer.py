@@ -895,7 +895,7 @@ def matvec_bias_kernel(x_ptr, weight_ptr, bias_ptr, out_ptr, features : tl.const
         for k in range(0, features, BLOCK_SIZE_N):
             x = tl.load(x_ptr + k + tl.arange(0, BLOCK_SIZE_N), mask = (k + tl.arange(0, BLOCK_SIZE_N) < features), other = 0.0)
             w = tl.load(
-                weight_ptr + (k + tl.arange(0, BLOCK_SIZE_N)[:, None]) + (j + tl.arange(0, BLOCK_SIZE_M))[None, :] * features,
+                weight_ptr + (k + tl.arange(0, BLOCK_SIZE_N)[:, None]) * hidden + (j + tl.arange(0, BLOCK_SIZE_M))[None, :],
                 mask = (k + tl.arange(0, BLOCK_SIZE_N)[:, None] < features) & (j + tl.arange(0, BLOCK_SIZE_M)[None, :] < hidden),
                 other = 0.0
             )
