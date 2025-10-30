@@ -352,9 +352,9 @@ def conv2d_embed_n256_1152_res(images, patch_w, patch_b, pos_emb, out):
     matmul_small_bias_res_mod[(256 * nviews // 64) * (1152 // 64),](
         img_input,
         patch_w_t,
+        out,
         patch_b,
         pos_emb,
-        out,
         seq_len = 256 * nviews,
         features = 3 * 14 * 14,
         hidden = 1152,
@@ -409,8 +409,8 @@ def layer_norm_QKV_matmul_n256_1152_3456_bias(x, norm_w, norm_b, qkv_w, qkv_b, o
     matmul_small_bias[((seq_len + 63) // 64) * (3456 // 64),](
         x_norm,
         qkv_w,
-        qkv_b,
         out,
+        qkv_b,
         seq_len = seq_len,
         features = 1152,
         hidden = 3456,
@@ -765,8 +765,8 @@ def layer_norm_matmul_n256_1152_2048_bias(x, norm_w, norm_b, proj_w, proj_b, out
     matmul_small_bias[((seq_len + 63) // 64) * (2048 // 64),](
         x_norm,
         proj_w,
-        proj_b,
         out,
+        proj_b,
         seq_len = seq_len,
         features = 1152,
         hidden = 2048,
