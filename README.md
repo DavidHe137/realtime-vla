@@ -3,7 +3,7 @@
 This project provides accelerated inference kernels of the Pi0 model from [OpenPI](https://github.com/Physical-Intelligence/openpi) project.
 
 ![Framework](./images/framework.png)
-*The Full Streaming Inference framework. AE is the action expert in Pi0*
+*The full streaming inference framework. AE is the action expert in Pi0*
 
 
 The inference time for one set of observations (10 flow steps, 63 chunk size, empty prompt) on RTX 4090 (max boosted clock 2.79GHz) is as follows:
