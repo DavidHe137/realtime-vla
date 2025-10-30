@@ -2,8 +2,9 @@
 
 This project provides accelerated inference kernels of the Pi0 model from [OpenPI](https://github.com/Physical-Intelligence/openpi) project.
 
-![eal-time VLA Inference Demo](./images/realdemo.png)
-*Figure: Grasping a falling pen. The task has a very stringent time constraint. We implemented 30 FPS inference of the VLA model so that all frames in our camera stream can be processed, and the end-to-end reaction time can be shorter than 200 ms.*
+![Framework](./images/framework.png)
+*The Full Streaming Inference framework. AE is the action expert in Pi0*
+
 
 The inference time for one set of observations (10 flow steps, 63 chunk size, empty prompt) on RTX 4090 (max boosted clock 2.79GHz) is as follows:
 
@@ -17,6 +18,10 @@ For more realistic settings (prompt length 20 tokens, 50 chunk size), we have
 | 23.6ms | 32.9ms | 39.2ms |
 
 To match camera speeds, you should consider using **30fps** for one or two views , and **25 fps** for three views.
+
+
+![Real-time VLA Inference Demo](./images/realdemo.png)
+*Real-world demonstration: catching a falling pen with sub-200ms end-to-end latency using 30 FPS inference.*
 
 ## How to Use
 
