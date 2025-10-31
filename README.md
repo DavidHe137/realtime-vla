@@ -3,7 +3,7 @@
 This project provides accelerated inference kernels of the Pi0 model from [OpenPI](https://github.com/Physical-Intelligence/openpi) project.
 
 ![Real-time VLA Inference Demo](./images/realdemo.png)
-*Real-world demonstration: catching a falling pen with sub-200ms end-to-end latency using 30 FPS inference. (From "[Running VLAs at Real-time Speed](https://dexmal.com/docs/RT-VLA_Tech_Report.pdf)")*
+*Real-world demonstration: catching a falling pen with sub-200ms end-to-end latency using 30 FPS inference. (From "[Running VLAs at Real-time Speed](https://arxiv.org/abs/2510.26742)")*
 
 
 The inference time for one set of observations (10 flow steps, 63 chunk size, empty prompt) on RTX 4090 (max boosted clock 2.79GHz) is as follows:
@@ -68,4 +68,14 @@ This project is developed based on Physical Intelligence's [OpenPI](https://gith
 
 
 ## Citation
+
 If you want, you can cite this work with:
+
+```bibtex
+@article{ma2025runningvlasrealtimespeed,
+  title={Running VLAs at Real-time Speed},
+  author={Ma, Yunchao and Zhou, Yizhuang and Yang, Yunhuan and Wang, Tiancai and Fan, Haoqiang},
+  journal={arXiv preprint arXiv:2510.26742},
+  year={2025}
+}
+```
