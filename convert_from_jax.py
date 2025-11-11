@@ -220,7 +220,23 @@ def load_jax_weights(jax_path: str):
             ),
         )["params"]
         print(f"Loaded JAX params keys: {params.keys()}")
-    return params
+
+    def _ensure_value_dict(node):
+        if isinstance(node, dict):
+            new_node = {}
+            for key, value in node.items():
+                if key == "value":
+                    if isinstance(value, dict):
+                        new_node[key] = _ensure_value_dict(value)
+                    else:
+                        new_node[key] = value
+                else:
+                    new_node[key] = _ensure_value_dict(value)
+            return new_node
+        else:
+            return {"value": node}
+
+    return _ensure_value_dict(params)
 
 def prepare_prompt(prompt: str, embedding_weight, tokenizer_path):
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
